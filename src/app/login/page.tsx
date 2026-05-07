@@ -4,7 +4,22 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
-import { Zap, ArrowRight, Loader2 } from "lucide-react"
+import { ArrowRight, Loader2 } from "lucide-react"
+
+function PrismMark() {
+  return (
+    <svg viewBox="0 0 28 28" fill="none" className="w-9 h-9">
+      <defs>
+        <linearGradient id="login-grad" x1="0" y1="0" x2="28" y2="28">
+          <stop offset="0" stopColor="#FF7A5C" />
+          <stop offset="1" stopColor="#E8401C" />
+        </linearGradient>
+      </defs>
+      <path d="M14 3 L25 23 L3 23 Z" fill="url(#login-grad)" stroke="#FF5E3A" strokeWidth="0.5" />
+      <circle cx="14" cy="14" r="1.8" fill="#FAFAFA" />
+    </svg>
+  )
+}
 
 export default function LoginPage() {
   const router = useRouter()
@@ -31,31 +46,28 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "var(--bg-base)" }}>
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+      <div className="mesh-bg" />
 
-        {/* Logo */}
+      <div className="relative w-full max-w-sm">
         <div className="flex justify-center mb-10">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-500/25">
-              <Zap className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-              Prism
+            <PrismMark />
+            <span className="font-display text-2xl text-[var(--text-1)]">
+              Prism<span className="accent-text">.</span>
             </span>
           </Link>
         </div>
 
-        {/* Card */}
-        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8">
+        <div className="glass-elevated p-8">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-white mb-1.5">Welcome back</h1>
-            <p className="text-sm text-[var(--text-muted)]">Sign in to your Prism account</p>
+            <h1 className="font-display text-3xl text-[var(--text-1)] mb-1.5">Welcome back</h1>
+            <p className="text-sm text-[var(--text-3)]">Sign in to your Prism account</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-wider">
+              <label className="block text-xs font-medium text-[var(--text-3)] mb-2 uppercase tracking-wider">
                 Email
               </label>
               <input
@@ -65,12 +77,12 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-violet-500/50 focus:bg-white/[0.06] transition-all"
+                className="w-full bg-[var(--surface-1)] border border-[var(--border-soft)] rounded-xl px-4 py-3 text-sm text-[var(--text-1)] placeholder:text-[var(--text-4)] focus:outline-none focus:border-[var(--accent)] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-wider">
+              <label className="block text-xs font-medium text-[var(--text-3)] mb-2 uppercase tracking-wider">
                 Password
               </label>
               <input
@@ -80,7 +92,7 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 autoComplete="current-password"
-                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-violet-500/50 focus:bg-white/[0.06] transition-all"
+                className="w-full bg-[var(--surface-1)] border border-[var(--border-soft)] rounded-xl px-4 py-3 text-sm text-[var(--text-1)] placeholder:text-[var(--text-4)] focus:outline-none focus:border-[var(--accent)] transition-all"
               />
             </div>
 
@@ -90,37 +102,20 @@ export default function LoginPage() {
               </div>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white transition-all disabled:opacity-60"
-              style={{
-                background: loading
-                  ? "rgba(139,92,246,0.5)"
-                  : "linear-gradient(135deg, #8b5cf6, #6366f1)",
-                boxShadow: loading ? "none" : "0 0 24px rgba(139,92,246,0.35)",
-              }}
-            >
-              {loading ? (
-                <Loader2 className="w-4 h-4 animate-spin" />
-              ) : (
-                <>
-                  Sign in
-                  <ArrowRight className="w-4 h-4" />
-                </>
-              )}
+            <button type="submit" disabled={loading} className="btn-primary w-full justify-center disabled:opacity-60">
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Sign in <ArrowRight className="w-4 h-4" /></>}
             </button>
           </form>
 
-          <p className="text-center text-sm text-[var(--text-muted)] mt-6">
+          <p className="text-center text-sm text-[var(--text-3)] mt-6">
             No account?{" "}
-            <Link href="/signup" className="text-violet-400 hover:text-violet-300 font-medium transition-colors">
+            <Link href="/signup" className="accent-text hover:opacity-80 font-medium transition-opacity">
               Create one free →
             </Link>
           </p>
         </div>
 
-        <p className="text-center text-xs text-white/20 mt-6">
+        <p className="text-center text-xs text-[var(--text-4)] mt-6">
           Built solo · Shipped honest · v0.1
         </p>
       </div>

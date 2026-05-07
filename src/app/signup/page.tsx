@@ -3,7 +3,22 @@
 import { useState } from "react"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/client"
-import { Zap, CheckCircle2, ArrowRight, Loader2 } from "lucide-react"
+import { CheckCircle2, ArrowRight, Loader2 } from "lucide-react"
+
+function PrismMark() {
+  return (
+    <svg viewBox="0 0 28 28" fill="none" className="w-9 h-9">
+      <defs>
+        <linearGradient id="signup-grad" x1="0" y1="0" x2="28" y2="28">
+          <stop offset="0" stopColor="#FF7A5C" />
+          <stop offset="1" stopColor="#E8401C" />
+        </linearGradient>
+      </defs>
+      <path d="M14 3 L25 23 L3 23 Z" fill="url(#signup-grad)" stroke="#FF5E3A" strokeWidth="0.5" />
+      <circle cx="14" cy="14" r="1.8" fill="#FAFAFA" />
+    </svg>
+  )
+}
 
 export default function SignupPage() {
   const [email, setEmail] = useState("")
@@ -36,13 +51,14 @@ export default function SignupPage() {
     return (
       <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "var(--bg-base)" }}>
         <div className="text-center max-w-sm w-full">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="w-8 h-8 text-emerald-400" />
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
+            style={{ background: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.25)" }}>
+            <CheckCircle2 className="w-8 h-8" style={{ color: "var(--success)" }} />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-3">Check your inbox</h2>
-          <p className="text-[var(--text-muted)] text-sm leading-relaxed">
+          <h2 className="font-display text-3xl text-[var(--text-1)] mb-3">Check your inbox</h2>
+          <p className="text-[var(--text-2)] text-sm leading-relaxed">
             We sent a confirmation link to{" "}
-            <span className="text-violet-400 font-medium">{email}</span>.
+            <span className="accent-text font-medium">{email}</span>.
             <br />Click it to activate your account.
           </p>
         </div>
@@ -57,20 +73,18 @@ export default function SignupPage() {
         {/* Logo */}
         <div className="flex justify-center mb-10">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-500/25">
-              <Zap className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-              Prism
+            <PrismMark />
+            <span className="font-display text-2xl text-[var(--text-1)]">
+              Prism<span className="accent-text">.</span>
             </span>
           </Link>
         </div>
 
         {/* Card */}
-        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8">
+        <div className="glass-elevated p-8">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-white mb-1.5">Create your account</h1>
-            <p className="text-sm text-[var(--text-muted)]">
+            <h1 className="font-display text-3xl text-[var(--text-1)] mb-1.5">Create your account</h1>
+            <p className="text-sm text-[var(--text-3)]">
               30 rewrites free · No credit card needed
             </p>
           </div>
@@ -87,7 +101,7 @@ export default function SignupPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-violet-500/50 focus:bg-white/[0.06] transition-all"
+                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[var(--accent)] focus:bg-white/[0.06] transition-all"
               />
             </div>
 
@@ -103,7 +117,7 @@ export default function SignupPage() {
                 required
                 minLength={8}
                 autoComplete="new-password"
-                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-violet-500/50 focus:bg-white/[0.06] transition-all"
+                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[var(--accent)] focus:bg-white/[0.06] transition-all"
               />
             </div>
 
@@ -116,13 +130,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white transition-all disabled:opacity-60"
-              style={{
-                background: loading
-                  ? "rgba(139,92,246,0.5)"
-                  : "linear-gradient(135deg, #8b5cf6, #6366f1)",
-                boxShadow: loading ? "none" : "0 0 24px rgba(139,92,246,0.35)",
-              }}
+              className="btn-primary w-full justify-center disabled:opacity-60"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -137,7 +145,7 @@ export default function SignupPage() {
 
           <p className="text-center text-sm text-[var(--text-muted)] mt-6">
             Already have an account?{" "}
-            <Link href="/login" className="text-violet-400 hover:text-violet-300 font-medium transition-colors">
+            <Link href="/login" className="accent-text hover:opacity-80 font-medium transition-colors">
               Sign in
             </Link>
           </p>
