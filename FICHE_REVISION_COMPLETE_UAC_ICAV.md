@@ -1133,3 +1133,376 @@ Deux procédures :
 ---
 
 *Bonne révision et bonne composition ! Tu as tout ce qu'il faut dans cette fiche. 💪*
+
+---
+---
+
+# MATIÈRE 7 — COLLECTE ET PRÉ-TRAITEMENT D'IMAGES
+*(Mardi 15H-16H — Dr Hermann Arnaud PLAGBETO)*
+
+---
+
+## I. DÉFINITIONS CLÉS
+
+**Image** = Représentation pictorielle obtenue dans n'importe quelle partie du spectre électromagnétique. Les images satellites sont en format numérique où chaque pixel correspond à un nombre représentant l'intensité lumineuse.
+
+**Pixel** (Picture Element) = Cellule de base d'une image numérique. La luminosité de chaque pixel est représentée par une valeur numérique. Le coin supérieur gauche est l'origine (coordonnées X = colonnes, Y = lignes).
+
+**Photo aérienne** = Image de la surface terrestre prise depuis un capteur à bord d'un aéronef (avion, drone, ballon), selon une perspective verticale ou oblique. Obtenue par **projection centrale**.
+
+**Télédétection** = Ensemble des connaissances et techniques pour déterminer des caractéristiques physiques et biologiques d'objets par des mesures effectuées **à distance**, sans contact matériel.
+
+**Capteur** = Appareil de mesure embarqué à bord du vecteur. Mesure l'énergie électromagnétique.
+
+**Vecteur** = Plateforme satellisée ou aéroportée (avion, satellite, drone) à bord de laquelle est placé le capteur.
+
+**Photogrammétrie** = Ensemble des techniques permettant de **mesurer les objets dans les trois dimensions** de l'espace.
+
+**Signature spectrale** = Pourcentage de radiations réfléchi par un objet pour l'ensemble des longueurs d'onde du spectre électromagnétique. Permet de distinguer les types de surfaces (végétation, eau, sols, bâtiments).
+
+**Géoréférencement** = Processus de positionnement d'un objet dans l'espace par l'attribution de coordonnées géographiques s'inscrivant dans un système de référence.
+
+**Données matricielles (raster)** = Images représentées sous forme de matrice de rangées et colonnes, où chaque cellule (pixel) a ses propres coordonnées et attributs.
+
+**Données vectorielles** = Représentation des objets géographiques par des points, lignes et surfaces (polygones).
+
+**Numérisation** = Conversion d'un signal analogique en signal numérique. En géomatique : passage de données papier (plan, carte, photo) vers le format numérique.
+
+**Digitalisation** = Technique d'extraction ou de reproduction sous forme de dessin (vecteur) d'un objet à partir d'une donnée géoréférencée.
+
+> ⚠️ **PIÈGE :** Numérisation ≠ Digitalisation. La numérisation concerne la conversion analogique→numérique. La digitalisation est la création de données vectorielles à partir d'une image numérique géoréférencée.
+
+---
+
+## II. TYPES DE PHOTOS AÉRIENNES
+
+| Type | Description | Usage |
+|------|-------------|-------|
+| **Verticale** | Axe optique perpendiculaire au sol | Cartographie, photogrammétrie |
+| **Oblique** | Axe de prise de vue incliné | Visualisation 3D, patrimoine, urbanisme |
+| **Stéréoscopique** | Paires de photos avec recouvrement | Vision en relief (3D) |
+| **Multispectrale/thermique** | Capteurs spéciaux (NIR, thermique…) | Analyse végétation, température |
+
+---
+
+## III. PROCESSUS D'ACQUISITION D'IMAGES
+
+### Avec drone :
+1. Définir l'**objectif de mission**
+2. Choisir le **drone et le capteur**
+3. **Planifier le vol**
+4. Déployer les **GCPs** (Ground Control Points — Points de calage au sol)
+5. **Exécuter le vol**
+6. **Récupérer les données**
+7. **Contrôle qualité**
+
+### Avec SAS.Planet (logiciel libre, Windows) :
+SAS.Planet permet de visualiser et télécharger des images satellites depuis Google Maps, Bing, Yandex, ESRI, etc.
+
+**Étapes :**
+1. Installer et lancer SASPlanet.exe
+2. Choisir une source d'image (ex : Bing Maps, Google Satellite)
+3. Définir la zone d'intérêt (sélection rectangulaire ou polygone)
+4. Télécharger : Operations → Download → Selected Area
+5. Assembler : Operations → Stitch → Selected Area
+6. Exporter en GeoTIFF (avec fichier .tfw pour géoréférencement dans QGIS/ArcGIS)
+
+> **Légalité :** Images de SAS.Planet issues de services tiers → ne pas utiliser à des fins commerciales sans autorisation.
+
+### Téléchargement Landsat (USGS EarthExplorer) :
+1. Créer un compte sur earthexplorer.usgs.gov
+2. Définir la zone d'étude et la plage de dates
+3. Sélectionner la source : Landsat 8 OLI/TIRS ou Landsat 9
+4. Télécharger : Level-1 GeoTIFF (fichier .tar.gz avec bandes B1 à B11)
+5. Le fichier MTL (*_MTL.txt) contient les métadonnées (corrections radiométriques)
+
+---
+
+## IV. STRUCTURE D'UNE IMAGE NUMÉRIQUE
+
+- Image stockée dans un format de **grille régulière** (lignes × colonnes)
+- Chaque pixel possède des **coordonnées** et une **valeur numérique** (DN = Digital Number)
+- Origine = **coin supérieur gauche**
+- Valeurs X = colonnes (pixels) ; Valeurs Y = lignes (rangées)
+
+**Image Landsat ETM** = Composée de plusieurs bandes spectrales (raster), correspondant aux différentes zones du spectre électromagnétique.
+
+---
+
+## V. LES 4 TYPES DE RÉSOLUTION (arbitrage obligatoire)
+
+| Résolution | Description |
+|-----------|-------------|
+| **Spatiale** | Taille du plus petit objet détectable (pixel) |
+| **Spectrale** | Nombre et largeur des bandes spectrales |
+| **Temporelle** | Fréquence de revisite (ex : 26 jours pour SPOT) |
+| **Radiométrique** | Nombre de niveaux de gris (ex : 8 bits = 256 niveaux) |
+
+> **Arbitrage clé :** Si la résolution spatiale est élevée → scène réduite → moins d'énergie reçue → nécessite d'élargir les longueurs d'onde → diminue la résolution spectrale. **On ne peut pas tout avoir à la fois.**
+
+---
+
+## VI. ORBITES SATELLITES
+
+| Orbite | Altitude | Caractéristiques |
+|--------|----------|-----------------|
+| **Basse (LEO)** | < 2 000 km | Défilement, cartographie (Landsat, Sentinel, SPOT) |
+| **Moyenne (MEO)** | 2 000 – 35 786 km | GPS, navigation |
+| **Géostationnaire (GEO)** | ≈ 35 786 km | Immobile par rapport à la Terre, météo, télécommunications |
+
+**Nœud ascendant** = Le satellite franchit le plan de l'équateur du **sud vers le nord**.
+**Cycle orbital SPOT** = 369 révolutions = 26 jours.
+
+---
+
+## VII. REPRÉSENTATION DES DONNÉES VECTEUR (SIG)
+
+| Objet | Description | Exemples |
+|-------|-------------|---------|
+| **Point** | Objet sans surface | Arbres, bornes, puits |
+| **Ligne** | Réseau, flux | Routes, rivières, réseaux |
+| **Surface/Polygone** | Entité surfacique | Forêts, lacs, bâtiments, communes |
+
+---
+
+## VIII. RÉSUMÉ ÉCLAIR
+
+> Une **image** est une matrice de pixels avec valeurs numériques. La **photo aérienne** = image obtenue par projection centrale depuis un aéronef. La **télédétection** mesure à distance. La **signature spectrale** identifie les surfaces. SAS.Planet et USGS EarthExplorer sont des outils d'acquisition. Les **4 résolutions** sont en arbitrage permanent.
+
+---
+
+## IX. 12 QUESTIONS D'EXAMEN AVEC RÉPONSES
+
+**Q1. Définissez un pixel et une image numérique.**
+> Un pixel (Picture Element) est la cellule de base d'une image numérique dont la luminosité est représentée par une valeur numérique. Une image numérique est une matrice de rangées et colonnes de pixels, chacun ayant ses propres coordonnées et attributs.
+
+**Q2. Définissez la photo aérienne et citez ses 4 types.**
+> Une photo aérienne est une image de la surface terrestre obtenue par projection centrale depuis un aéronef. Types : verticale (axe perpendiculaire), oblique (axe incliné), stéréoscopique (paire avec recouvrement pour la 3D), multispectrale/thermique.
+
+**Q3. Quelle est la différence entre numérisation et digitalisation ?**
+> La numérisation est la conversion d'un signal analogique en numérique (ex : scanner une carte). La digitalisation est la création de données vectorielles (points, lignes, surfaces) à partir d'une image géoréférencée.
+
+**Q4. Quelles sont les étapes d'acquisition d'images avec un drone ?**
+> 1. Objectif de mission. 2. Choix du drone et capteur. 3. Planification du vol. 4. Déploiement des GCPs. 5. Exécution du vol. 6. Récupération des données. 7. Contrôle qualité.
+
+**Q5. Définissez la télédétection et la signature spectrale.**
+> Télédétection : techniques pour mesurer des caractéristiques d'objets à distance, sans contact. Signature spectrale : pourcentage de radiations réfléchi par un objet pour chaque longueur d'onde, permettant d'identifier la nature d'une surface.
+
+**Q6. Quels sont les 4 types de résolution d'une image satellite ?**
+> Spatiale (taille du pixel), spectrale (bandes du spectre), temporelle (fréquence de revisite), radiométrique (niveaux de gris). On ne peut pas maximiser tous les 4 simultanément.
+
+**Q7. Qu'est-ce que le géoréférencement ?**
+> C'est le processus de positionnement d'un objet dans l'espace par l'attribution de coordonnées géographiques dans un système de référence.
+
+**Q8. Distinguez orbite basse, moyenne et géostationnaire.**
+> Basse (LEO) < 2 000 km : défilement, cartographie. Moyenne (MEO) 2 000-35 786 km : GPS. Géostationnaire ≈ 35 786 km : immobile, météo, télécommunications.
+
+**Q9. Quelles sont les étapes de téléchargement d'une image via SAS.Planet ?**
+> 1. Lancer SASPlanet. 2. Choisir une source. 3. Définir la zone. 4. Télécharger (Operations→Download). 5. Assembler (Operations→Stitch). 6. Exporter en GeoTIFF.
+
+**Q10. Qu'est-ce que le nœud ascendant d'un satellite ?**
+> C'est le point formé à l'intersection du plan de l'équateur et du plan de l'orbite du satellite, quand le satellite franchit l'équateur du **sud vers le nord**.
+
+**Q11. Citez 3 objets géométriques utilisés en SIG pour représenter les données.**
+> Point (bornes, arbres), Ligne (routes, rivières), Surface/Polygone (forêts, communes, bâtiments).
+
+**Q12. Quelles sont les sources d'acquisition de données en géomatique ?**
+> Documents existants (cartes papier, plans cadastraux), photos aériennes, images satellites (Landsat, Sentinel), données alphanumériques (géocodage), levés terrain (GPS, théodolite, planchette).
+
+---
+
+## X. ERREURS FRÉQUENTES À ÉVITER
+
+- ⚠️ Confondre numérisation (analogique→numérique) et digitalisation (image→vecteur)
+- ⚠️ Confondre capteur (instrument de mesure) et vecteur (plateforme de transport)
+- ⚠️ Croire qu'on peut avoir toutes les résolutions au maximum simultanément
+- ⚠️ Oublier que l'origine d'une image est le **coin supérieur gauche**
+
+---
+---
+
+# MATIÈRE 8 — INTERPRÉTATION VISUELLE ET INTERPRÉTATION NUMÉRIQUE DES IMAGES
+*(Mardi 16H-17H — Prof Vincent OREKAN & Dr Hermann PLAGBETO)*
+
+---
+
+## I. DÉFINITIONS CLÉS
+
+**Photo-interprétation** = Acte qualitatif d'identification **manuelle** d'objets et/ou de phénomènes à partir d'images spatiales. Elle vise à faire des croquis ou des cartes.
+
+**Interprétation numérique** = Utilisation d'algorithmes et de logiciels pour analyser, classifier et extraire automatiquement des informations à partir d'images.
+
+**Interprétation visuelle** = Première étape intuitive et cognitive dans l'analyse d'une image géospatiale. L'interprète utilise ses sens et son expérience.
+
+**Classification** = Attribution d'une catégorie spécifique à chaque pixel d'une image en fonction de ses caractéristiques spectrales.
+
+**NDVI** (Normalized Difference Vegetation Index) = Indice spectral de végétation.
+> Formule : **NDVI = (NIR - Red) / (NIR + Red)**
+> NIR = proche infrarouge, Red = rouge. Valeurs entre -1 et +1 (proche de 1 = végétation dense).
+
+**OBIA** (Object-Based Image Analysis) = Analyse orientée-objet : classification par groupes de pixels homogènes (formes + caractéristiques spectrales).
+
+**DN (Digital Number)** = Valeur numérique d'un pixel correspondant à la réflectance mesurée dans une bande spectrale.
+
+---
+
+## II. LES 8 ÉLÉMENTS D'INTERPRÉTATION D'UNE PHOTO AÉRIENNE
+
+*(À mémoriser absolument — souvent posés en examen)*
+
+| # | Élément | Description | Exemple |
+|---|---------|-------------|---------|
+| 1 | **Taille** | Taille relative par rapport aux objets voisins | Bâtiment > maison unifamiliale |
+| 2 | **Forme** | Limite et contour de l'objet (vue en plan) | Formes régulières = œuvre humaine ; irrégulières = naturel |
+| 3 | **Ombre** | Révèle la forme, la taille, la hauteur | Pylônes identifiables par leur ombre |
+| 4 | **Ton** | Quantité de lumière émise (nuances de gris) | Eau lisse = claire ou foncée selon l'angle |
+| 5 | **Texture** | Fréquence des changements de tons | Forêt = texture grossière ; asphalte = lisse |
+| 6 | **Motif** | Disposition spatiale des caractéristiques | Verger = motif régulier ; cours d'eau = irrégulier |
+| 7 | **Emplacement** | Contexte régional et sous-régional | Silo cylindrique en zone agricole ≠ réservoir en raffinerie |
+| 8 | **Associations** | Relations spatiales entre objets voisins | Grand parking → centre commercial ; camions → entrepôt |
+
+---
+
+## III. TYPES D'INTERPRÉTATION VISUELLE
+
+| Type | Description |
+|------|-------------|
+| **Qualitative** | Reconnaissance d'objets (bâtiments, routes, cultures) |
+| **Thématique** | Classification de l'occupation du sol (urbain, rural, agricole, forestier) |
+| **Chronologique** | Comparaison entre plusieurs images pour détecter des changements |
+
+---
+
+## IV. INTERPRÉTATION NUMÉRIQUE — MÉTHODES
+
+### 1. Classification des pixels
+
+**Classification supervisée** = L'utilisateur sélectionne des échantillons de référence ("classes d'entraînement"), l'algorithme classifie le reste.
+- Algorithmes : Maximum de vraisemblance, SVM (Support Vector Machine), Random Forest
+
+**Classification non supervisée** = L'algorithme regroupe les pixels selon leur similarité spectrale, sans connaissance préalable.
+- Algorithmes : K-means, ISODATA
+
+**Classification hybride** = Combine les deux pour améliorer la précision.
+
+### 2. Indices spectraux (calculs entre bandes)
+| Indice | Formule | Usage |
+|--------|---------|-------|
+| **NDVI** | (NIR - Red) / (NIR + Red) | Végétation |
+| Autres | Calculs similaires | Eau, zones urbaines |
+
+### 3. Détection de changements
+Comparaison entre deux images à des dates différentes → repérage des évolutions (urbanisation, déforestation).
+
+### 4. Segmentation / OBIA
+Analyse orientée-objet : classification par groupes de pixels homogènes (formes + spectres).
+
+---
+
+## V. APPLICATIONS DE L'INTERPRÉTATION D'IMAGES
+
+| Domaine | Application |
+|---------|------------|
+| **Cartographie** | Occupation du sol, cadastre, carte manuelle |
+| **Urbanisme** | Zonage, planification urbaine |
+| **Environnement** | Détection déforestation, crues, suivi des écosystèmes |
+| **Agriculture** | Surfaces cultivées, santé des cultures |
+| **Sécurité civile** | Analyse post-catastrophe |
+| **Archéologie** | Identification de structures anciennes |
+
+---
+
+## VI. LIMITES DE L'INTERPRÉTATION VISUELLE
+
+- **Subjective** : dépend de l'expérience de l'interprète
+- Moins efficace pour des images à haute complexité spectrale
+- Moins reproductible que les méthodes numériques
+
+---
+
+## VII. EFFETS SAISONNIERS SUR L'INTERPRÉTATION
+
+- En saison sèche : arbres à feuilles caduques perdent leurs feuilles → estimation erronée de hauteur de canopée.
+- Ruisseaux intermittents remplis en saison humide → risque de les classifier comme pérennes.
+- Couverture de neige → dissimule routes, cours d'eau, végétation.
+- **Toujours vérifier la date de prise de vue** avant toute interprétation.
+
+---
+
+## VIII. APPROCHE MÉTHODIQUE D'INTERPRÉTATION
+
+1. **Orienter** la photo par rapport à une carte disponible
+2. **Scanner** la zone et noter son caractère général
+3. **Diviser en sous-régions** (montagnes/plaines, forêts/prairies, urbain/agricole)
+4. Identifier les **grandes caractéristiques** et lignes de communication
+5. Évaluer les **caractéristiques connues** en premier
+6. Identifier les **éléments inconnus** par association avec le connu
+
+> Règle d'or : **Aller du général au détail. Toujours identifier le connu avant l'inconnu.**
+
+---
+
+## IX. QUALITÉS D'UN BON INTERPRÈTE PHOTO
+
+1. Conscience des caractéristiques et limites de l'imagerie
+2. Connaissance approfondie (agriculture, industrie, transports, végétation, hydrographie)
+3. Attitude positive et approche scientifique
+4. Communication avec d'autres cartographes
+
+> La qualité du produit dépend de : qualité de l'imagerie + équipements + temps disponible + **capacité de l'interprète** (le plus important).
+
+---
+
+## X. RÉSUMÉ ÉCLAIR
+
+> L'**interprétation visuelle** utilise 8 éléments (taille, forme, ombre, ton, texture, motif, emplacement, associations) pour identifier manuellement des objets. L'**interprétation numérique** classe automatiquement les pixels par algorithmes (supervisée, non supervisée). Le **NDVI** mesure la végétation. La méthode = du général au détail.
+
+---
+
+## XI. 12 QUESTIONS D'EXAMEN AVEC RÉPONSES
+
+**Q1. Définissez la photo-interprétation et l'interprétation numérique. Quelle est la différence ?**
+> Photo-interprétation : identification qualitative et manuelle d'objets sur des images. Interprétation numérique : utilisation d'algorithmes pour analyser et classifier automatiquement les pixels. La première est subjective/manuelle, la seconde est automatisée/objective.
+
+**Q2. Citez et définissez les 8 éléments d'interprétation d'une photo aérienne.**
+> Taille (importance relative), Forme (contour de l'objet), Ombre (révèle forme et hauteur), Ton (luminosité en nuances de gris), Texture (fréquence des changements de ton), Motif (disposition spatiale), Emplacement (contexte régional), Associations (objets voisins indicateurs).
+
+**Q3. Quelle est la formule du NDVI ? Que mesure-t-il ?**
+> NDVI = (NIR - Red) / (NIR + Red). Il mesure la densité et la santé de la végétation. Valeurs proches de +1 = végétation dense et saine.
+
+**Q4. Distinguez classification supervisée et non supervisée.**
+> Supervisée : l'utilisateur définit des échantillons de référence, l'algorithme classifie le reste (ex : Maximum de vraisemblance, Random Forest). Non supervisée : l'algorithme regroupe les pixels par similarité sans intervention humaine (ex : K-means, ISODATA).
+
+**Q5. Pourquoi doit-on toujours vérifier la date de prise de vue avant d'interpréter une image ?**
+> Les effets saisonniers modifient l'apparence des objets : arbres sans feuilles en saison sèche, ruisseaux remplis en saison humide, couverture de neige qui cache des éléments. Une mauvaise date peut entraîner des erreurs d'interprétation.
+
+**Q6. Comment l'ombre aide-t-elle l'interprète ?**
+> Elle révèle la forme, la taille et la hauteur des objets. Des objets peu visibles en vue de dessus (pylônes, tours) deviennent identifiables grâce à leur ombre. Elle indique aussi la hauteur relative des objets.
+
+**Q7. Qu'est-ce que la texture en photo-interprétation ? Donnez un exemple.**
+> La texture est la fréquence des changements de tons sur l'image. Texture lisse = ton constant (asphalte). Texture grossière = changements fréquents (forêt à grande échelle). Texture marbrée = taches irrégulières.
+
+**Q8. Citez 4 applications de l'interprétation d'images aériennes.**
+> Cartographie de l'occupation du sol, planification urbaine (urbanisme), suivi environnemental (déforestation), analyse post-catastrophe (sécurité civile).
+
+**Q9. Quelle est la différence entre forme et motif en photo-interprétation ?**
+> La forme est le contour d'un objet individuel. Le motif est la disposition spatiale de plusieurs caractéristiques dans une zone. Forme régulière = objet fabriqué par l'homme ; motif régulier = verger ou rue urbaine.
+
+**Q10. Quelles sont les limites de l'interprétation visuelle ?**
+> Elle est subjective (dépend de l'expérience), moins efficace pour les images spéctralement complexes, et moins reproductible que les méthodes numériques automatiques.
+
+**Q11. Expliquez la règle méthodologique de base de l'interprétation.**
+> Aller du général au détail : 1. Orienter la photo. 2. Scanner la zone. 3. Diviser en sous-régions. 4. Identifier les caractéristiques connues. 5. Déduire l'inconnu par associations.
+
+**Q12. Qu'est-ce que l'OBIA (analyse orientée objet) ?**
+> L'OBIA (Object-Based Image Analysis) est une méthode d'interprétation numérique qui classe des groupes de pixels homogènes (segments) en tenant compte à la fois de leurs caractéristiques spectrales et de leur forme géographique.
+
+---
+
+## XII. ERREURS FRÉQUENTES À ÉVITER
+
+- ⚠️ Confondre les 8 éléments d'interprétation (les retenir par cœur : Taille/Forme/Ombre/Ton/Texture/Motif/Emplacement/Associations)
+- ⚠️ Confondre classification supervisée (avec échantillons) et non supervisée (sans échantillons)
+- ⚠️ Oublier l'effet saisonnier dans l'interprétation
+- ⚠️ Confondre texture (changement de tons sur un objet) et ton (luminosité globale d'un objet)
+
