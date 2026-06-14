@@ -1870,3 +1870,371 @@ Sites/outils : **BBBike**, **Diva GIS**, **HOT Export**, **Overpass turbo**, **G
 > Carte = réduite + schématisée + sélectionnée → **5 principes** (dessin, plane, réduite, simplifiée, conventionnelle). **3 signes** : point/ligne/zone ; **6 variables visuelles** : forme, taille, orientation, couleur, valeur, grain (**taille = quantitatif**, **valeur = classes ordonnées**). Couleurs **fondamentales B/V/R** vs **primaires C/M/J**. Cartographie numérique = cartes via **SIG/fichiers numériques** (≫ avantages vs cartes papier). **OSM** = Wikipédia de la carto, libre (**ODbL**), téléchargeable via **BBBike/Geofabrik/HOT/QGIS** ; sous QGIS : fond de carte **QuickMapServices**, modèle **clé/valeur** (`amenity=restaurant`, `highway`), filtres SQL `"champ" <> ' '`.
 
 ---
+
+
+---
+
+# MATIÈRE 11 — ANGLAIS APPLIQUÉ À L'ENVIRONNEMENT (English for Environment & Geomatics)
+
+> ℹ️ Reconstruit à partir de l'ensemble de tes cours (cartographie, SIG, télédétection, environnement, cadastre). Objectif : maîtriser le **vocabulaire technique en anglais**, savoir **définir** et **traduire**, et répondre à des questions simples. Apprends surtout les colonnes FR ↔ EN.
+
+---
+
+## I. VOCABULAIRE TECHNIQUE ESSENTIEL (FR ↔ EN)
+
+### Cartographie & SIG / Mapping & GIS
+| Français | English |
+|----------|---------|
+| Carte | Map |
+| Échelle | Scale |
+| Légende | Legend / Key |
+| Couche (de données) | Layer |
+| Fond de carte | Basemap |
+| Système d'information géographique (SIG) | Geographic Information System (GIS) |
+| Données spatiales / géographiques | Spatial / geographic data |
+| Coordonnées (latitude, longitude) | Coordinates (latitude, longitude) |
+| Projection cartographique | Map projection |
+| Levé (de terrain) | Survey |
+| Vecteur / matriciel (raster) | Vector / raster |
+| Point, ligne, polygone | Point, line, polygon |
+| Table attributaire | Attribute table |
+| Requête | Query |
+
+### Télédétection & Images / Remote Sensing & Imagery
+| Français | English |
+|----------|---------|
+| Télédétection | Remote sensing |
+| Image satellite | Satellite image |
+| Photographie aérienne | Aerial photograph |
+| Drone / aéronef sans pilote | Drone / UAV (Unmanned Aerial Vehicle) |
+| Pixel / résolution | Pixel / resolution |
+| Signature spectrale | Spectral signature |
+| Bande (spectrale) | Band |
+| Proche infrarouge | Near-infrared (NIR) |
+| Indice de végétation (NDVI) | Vegetation index (NDVI) |
+| Classification (supervisée/non supervisée) | Classification (supervised/unsupervised) |
+| Occupation du sol | Land use / land cover |
+| Géoréférencement | Georeferencing |
+
+### Environnement / Environment
+| Français | English |
+|----------|---------|
+| Environnement | Environment |
+| Développement durable | Sustainable development |
+| Biodiversité | Biodiversity |
+| Changement climatique | Climate change |
+| Réchauffement planétaire | Global warming |
+| Gaz à effet de serre | Greenhouse gases (GHG) |
+| Pollution | Pollution |
+| Déforestation | Deforestation |
+| Ressources naturelles | Natural resources |
+| Étude d'impact environnemental | Environmental Impact Assessment (EIA) |
+| Aire protégée | Protected area |
+| Bassin versant | Watershed / catchment |
+| Eaux usées / assainissement | Wastewater / sanitation |
+| Atténuation / adaptation | Mitigation / adaptation |
+
+### Cadastre & Foncier / Land Administration
+| Français | English |
+|----------|---------|
+| Cadastre | Cadastre / land registry |
+| Parcelle | Parcel / plot |
+| Propriété foncière | Land tenure / land ownership |
+| Limite / borne | Boundary / boundary marker |
+| Titre foncier | Land title |
+| Adressage | Addressing |
+| Aménagement du territoire | Land-use planning / territorial planning |
+
+---
+
+## II. VERBES & EXPRESSIONS UTILES (Action verbs)
+
+| Français | English |
+|----------|---------|
+| Collecter des données | To collect / gather data |
+| Analyser | To analyze |
+| Cartographier | To map |
+| Mesurer | To measure |
+| Surveiller / suivre | To monitor |
+| Évaluer | To assess / evaluate |
+| Mettre à jour | To update |
+| Télécharger | To download |
+| Afficher | To display |
+| Représenter | To represent |
+| Aménager / planifier | To plan |
+| Protéger / préserver | To protect / preserve |
+
+**Phrases-types (à réutiliser à l'examen) :**
+- *Remote sensing is the science of obtaining information about the Earth's surface without being in contact with it.*
+- *A GIS is a computer system used to capture, store, analyze and display geographic data.*
+- *NDVI is used to assess vegetation health: high values mean dense, healthy vegetation.*
+- *Sustainable development meets the needs of the present without compromising future generations.*
+- *An Environmental Impact Assessment evaluates the effects of a project on the environment before it is carried out.*
+
+---
+
+## III. DÉFINITIONS CLÉS EN ANGLAIS (à savoir rédiger)
+
+- **Map:** a reduced, simplified and conventional representation of all or part of the Earth's surface.
+- **Scale:** the ratio between a distance on the map and the corresponding distance on the ground.
+- **GIS (Geographic Information System):** a system designed to capture, store, manage, analyze and display spatial or geographic data.
+- **Remote sensing:** the acquisition of information about an object or area from a distance, typically using satellites or aircraft.
+- **NDVI (Normalized Difference Vegetation Index):** an index calculated as (NIR − Red) / (NIR + Red) used to measure vegetation density and health.
+- **Biodiversity:** the variety of living organisms (genetic, species and ecosystem diversity).
+- **Sustainable development:** development that meets present needs without compromising the ability of future generations to meet theirs.
+- **Cadastre:** an official register describing land parcels, their boundaries, area and ownership.
+
+---
+
+## IV. POINTS DE GRAMMAIRE UTILES
+
+- **Voix passive** (très fréquente dans les textes techniques) : *Data **are collected** by satellites.* / *The map **was produced** using QGIS.*
+- **Présent simple** pour les faits/définitions : *A pixel **is** the smallest element of an image.*
+- **Comparatifs/superlatifs** : *higher resolution*, *the most accurate method*, *larger than*.
+- **Connecteurs logiques** : *however* (cependant), *therefore* (donc), *because* (parce que), *in order to* (afin de), *whereas* (tandis que), *moreover* (de plus).
+
+---
+
+## V. QUESTIONS D'EXAMEN PROBABLES (avec réponses)
+
+**Q1. Translate into English: "La télédétection permet d'observer la Terre à distance."**
+> Remote sensing makes it possible to observe the Earth from a distance.
+
+**Q2. Define "GIS" in English.**
+> A GIS (Geographic Information System) is a computer system used to capture, store, analyze and display geographic (spatial) data.
+
+**Q3. Give the English term for: échelle, couche, occupation du sol, aire protégée.**
+> Scale, layer, land use/land cover, protected area.
+
+**Q4. What is NDVI and what is it used for? (in English)**
+> NDVI is the Normalized Difference Vegetation Index, calculated as (NIR − Red)/(NIR + Red). It is used to measure the density and health of vegetation.
+
+**Q5. Translate: "Le développement durable répond aux besoins du présent sans compromettre ceux des générations futures."**
+> Sustainable development meets the needs of the present without compromising those of future generations.
+
+**Q6. Complete: "A map is a ______, simplified and conventional representation of the Earth's surface."**
+> reduced.
+
+**Q7. Give 3 action verbs used in geomatics (English).**
+> To collect, to analyze, to map (also: to measure, to monitor, to update).
+
+**Q8. What does EIA stand for, and what is it?**
+> Environmental Impact Assessment: a study that evaluates the effects of a project on the environment before it is carried out.
+
+**Q9. Translate into French: "Satellite images are used to monitor deforestation."**
+> Les images satellites sont utilisées pour surveiller la déforestation.
+
+**Q10. Difference between "land use" and "land cover"?**
+> Land cover is the physical material on the surface (forest, water, buildings); land use is how humans use that land (agriculture, housing, industry).
+
+---
+
+## VI. ERREURS FRÉQUENTES À ÉVITER
+
+- ⚠️ Confondre **map** (carte) et **card** (carte de jeu/carte bancaire).
+- ⚠️ Oublier le **(s)** des noms anglais : *data are* (data = pluriel en contexte technique).
+- ⚠️ Traduire « actuellement » par *actually* (faux ami → *currently*). *Actually* = en fait.
+- ⚠️ Confondre **land use** et **land cover**.
+- ⚠️ Écrire *resolution* avec deux « s » (un seul s : re-so-lu-tion).
+- ⚠️ Oublier la voix passive, très utilisée dans les définitions techniques.
+
+---
+
+## VII. RÉSUMÉ ÉCLAIR
+
+> Maîtrise les paires FR↔EN : map/scale/layer/GIS, remote sensing/satellite image/NDVI, environment/biodiversity/sustainable development/EIA, cadastre/parcel/land tenure. Verbes : collect, analyze, map, monitor, assess. Définitions clés en anglais (map, GIS, remote sensing, NDVI, biodiversity). Grammaire : **voix passive** + présent simple pour les définitions. Attention aux faux amis (*actually* ≠ actuellement).
+
+---
+
+# MATIÈRE 12 — BIOSTATISTIQUE APPLIQUÉE À L'ENVIRONNEMENT
+
+> ℹ️ Cours standard reconstruit (programme type de biostatistique appliquée). Concentre-toi sur les **formules** et les **exemples chiffrés** : c'est ce qui tombe à l'examen.
+
+---
+
+## I. DÉFINITIONS CLÉS
+
+**Statistique** = Science qui collecte, organise, analyse et interprète des données pour aider à la décision.
+
+**Biostatistique** = Application des méthodes statistiques aux données du vivant et de l'environnement (espèces, populations, écosystèmes, pollution…).
+
+**Population (statistique)** = Ensemble de tous les individus/éléments étudiés. **Échantillon** = sous-ensemble représentatif de la population effectivement observé.
+
+**Individu (unité statistique)** = Élément de la population. **Effectif (N ou n)** = nombre d'individus.
+
+**Variable (caractère)** = Caractéristique étudiée sur chaque individu. Deux grands types :
+- **Qualitative** (non chiffrée) : *nominale* (sans ordre : espèce, sexe) ou *ordinale* (avec ordre : faible/moyen/fort).
+- **Quantitative** (chiffrée) : *discrète* (valeurs isolées : nombre d'arbres) ou *continue* (toutes valeurs d'un intervalle : hauteur, température).
+
+**Modalité** = Valeur possible d'une variable. **Fréquence** = effectif d'une modalité ÷ effectif total.
+
+> **⚠️ PIÈGE :** Une variable quantitative **discrète** se compte (entiers) ; **continue** se mesure (peut prendre des décimales).
+
+---
+
+## II. STATISTIQUE DESCRIPTIVE — PARAMÈTRES DE POSITION (tendance centrale)
+
+**Moyenne arithmétique** (x̄) :
+$$\bar{x} = \frac{\sum x_i}{n} \quad\text{ou pondérée : } \bar{x} = \frac{\sum (n_i \cdot x_i)}{\sum n_i}$$
+
+**Médiane (Me)** = valeur qui partage la série ordonnée en 2 parties égales (50 %).
+
+**Mode (Mo)** = valeur (ou modalité) la plus fréquente.
+
+> **Exemple :** Nombre d'arbres sur 5 parcelles : 4, 6, 6, 8, 10.
+> - Moyenne = (4+6+6+8+10)/5 = 34/5 = **6,8**
+> - Médiane (valeur centrale de la série ordonnée) = **6**
+> - Mode (valeur la plus fréquente) = **6**
+
+---
+
+## III. PARAMÈTRES DE DISPERSION
+
+**Étendue** = valeur max − valeur min.
+
+**Variance (V ou σ²)** = moyenne des carrés des écarts à la moyenne :
+$$V = \frac{\sum (x_i - \bar{x})^2}{n}$$
+
+**Écart-type (σ)** = racine carrée de la variance : $\sigma = \sqrt{V}$. Il s'exprime dans la même unité que la variable.
+
+**Coefficient de variation (CV)** = mesure la dispersion **relative** (sans unité) :
+$$CV = \frac{\sigma}{\bar{x}} \times 100\ (\%)$$
+- CV faible → série **homogène** ; CV élevé → série **hétérogène**. (Permet de comparer deux séries d'unités différentes.)
+
+> **Exemple (série 4, 6, 6, 8, 10 ; x̄ = 6,8) :**
+> Écarts² : (4−6,8)²=7,84 ; (6−6,8)²=0,64 ; 0,64 ; (8−6,8)²=1,44 ; (10−6,8)²=10,24
+> V = (7,84+0,64+0,64+1,44+10,24)/5 = 20,8/5 = **4,16**
+> σ = √4,16 ≈ **2,04** ; CV = (2,04/6,8)×100 ≈ **30 %**
+
+---
+
+## IV. REPRÉSENTATIONS GRAPHIQUES
+
+| Type de variable | Graphique adapté |
+|------------------|------------------|
+| Qualitative | Diagramme en **secteurs (camembert)**, en **bâtons/barres** |
+| Quantitative discrète | Diagramme en **bâtons** |
+| Quantitative continue (classes) | **Histogramme**, polygone des fréquences, courbe cumulative |
+
+> **⚠️ PIÈGE :** L'**histogramme** (barres collées) est réservé aux variables **continues** ; le **diagramme en bâtons** (barres séparées) aux variables discrètes/qualitatives.
+
+---
+
+## V. NOTIONS DE PROBABILITÉ & LOI NORMALE
+
+**Probabilité d'un événement** = nombre de cas favorables ÷ nombre de cas possibles (entre 0 et 1).
+
+**Loi normale (loi de Gauss)** = distribution en **cloche**, symétrique autour de la moyenne. Caractérisée par sa moyenne (μ) et son écart-type (σ).
+- ≈ **68 %** des valeurs dans [μ − σ ; μ + σ]
+- ≈ **95 %** dans [μ − 2σ ; μ + 2σ]
+- ≈ **99,7 %** dans [μ − 3σ ; μ + 3σ]
+
+---
+
+## VI. ÉCHANTILLONNAGE & TEST D'HYPOTHÈSE
+
+**But de l'échantillonnage :** estimer les paramètres d'une population à partir d'un échantillon représentatif (échantillonnage aléatoire simple, systématique, stratifié).
+
+**Test d'hypothèse :**
+- **H₀ (hypothèse nulle)** = pas de différence / pas d'effet.
+- **H₁ (hypothèse alternative)** = il existe une différence / un effet.
+- **Seuil de signification α** (souvent **5 % = 0,05**).
+- **Règle :** si **p-value < α** → on **rejette H₀** (résultat significatif) ; sinon on ne rejette pas H₀.
+
+**Tests courants :**
+- **Test du Khi-deux (χ²)** : teste l'indépendance/l'association entre **2 variables qualitatives** (tableau de contingence).
+- **Test t de Student** : compare des **moyennes**.
+- **ANOVA** : compare plus de 2 moyennes.
+
+---
+
+## VII. CORRÉLATION & RÉGRESSION
+
+**Corrélation (r de Pearson)** = mesure la liaison **linéaire** entre 2 variables quantitatives ; r ∈ [−1 ; +1].
+- r proche de **+1** → liaison positive forte ; **−1** → négative forte ; **0** → pas de liaison linéaire.
+
+**Régression linéaire** : modèle **y = a·x + b** (a = pente, b = ordonnée à l'origine) pour prédire y à partir de x.
+
+> **⚠️ PIÈGE :** Corrélation ≠ causalité. Deux variables corrélées ne sont pas forcément liées par une cause directe.
+
+---
+
+## VIII. APPLICATIONS À L'ENVIRONNEMENT — INDICES DE BIODIVERSITÉ
+
+**Richesse spécifique (S)** = nombre total d'espèces présentes.
+
+**Indice de Shannon (H')** = mesure la diversité (richesse + équitabilité) :
+$$H' = -\sum_{i=1}^{S} p_i \cdot \ln(p_i) \quad\text{où } p_i = \frac{n_i}{N}$$
+- H' élevé → forte diversité. (p_i = proportion de l'espèce i.)
+
+**Indice de Simpson (D)** = probabilité que 2 individus tirés au hasard soient d'espèces différentes :
+$$D = 1 - \sum p_i^2$$
+- D proche de 1 → forte diversité.
+
+**Équitabilité de Piélou (J)** = $J = \dfrac{H'}{\ln S}$ (entre 0 et 1 ; mesure la répartition des effectifs entre espèces).
+
+> **Exemple Shannon :** 2 espèces, proportions p₁ = 0,5 et p₂ = 0,5.
+> H' = −[0,5·ln(0,5) + 0,5·ln(0,5)] = −[0,5·(−0,693)·2] = **0,693**.
+
+---
+
+## IX. QUESTIONS D'EXAMEN PROBABLES (avec réponses)
+
+**Q1. Différence entre population et échantillon ?**
+> La population est l'ensemble de tous les individus étudiés ; l'échantillon est un sous-ensemble représentatif réellement observé.
+
+**Q2. Citez les types de variables avec un exemple.**
+> Qualitative nominale (espèce), qualitative ordinale (faible/moyen/fort), quantitative discrète (nombre d'arbres), quantitative continue (hauteur).
+
+**Q3. Calculez moyenne, médiane et mode de : 5, 7, 7, 9, 12.**
+> Moyenne = 40/5 = 8 ; médiane = 7 ; mode = 7.
+
+**Q4. Donnez les formules de la variance, de l'écart-type et du CV.**
+> V = Σ(xᵢ − x̄)²/n ; σ = √V ; CV = (σ/x̄)×100.
+
+**Q5. À quoi sert le coefficient de variation ?**
+> À mesurer la dispersion relative (sans unité) et comparer des séries d'unités différentes ; CV faible = série homogène.
+
+**Q6. Quel graphique pour une variable quantitative continue ?**
+> Un histogramme (barres collées).
+
+**Q7. Énoncez la règle des 68-95-99,7 de la loi normale.**
+> ≈68 % des valeurs dans μ±σ, ≈95 % dans μ±2σ, ≈99,7 % dans μ±3σ.
+
+**Q8. Que sont H₀ et H₁ ? Quand rejette-t-on H₀ ?**
+> H₀ = hypothèse nulle (pas d'effet), H₁ = alternative (effet). On rejette H₀ si la p-value < α (souvent 0,05).
+
+**Q9. Quel test pour l'association entre deux variables qualitatives ?**
+> Le test du Khi-deux (χ²).
+
+**Q10. Que mesure le coefficient de corrélation r ? Quelles valeurs prend-il ?**
+> La liaison linéaire entre 2 variables quantitatives ; r ∈ [−1 ; +1].
+
+**Q11. Donnez la formule de l'indice de Shannon.**
+> H' = −Σ pᵢ·ln(pᵢ), avec pᵢ = nᵢ/N.
+
+**Q12. Pourquoi dit-on que corrélation n'est pas causalité ?**
+> Parce que deux variables peuvent varier ensemble sans qu'il existe de lien de cause à effet (facteur tiers, hasard).
+
+**Q13. Différence entre indice de richesse spécifique et indice de Shannon ?**
+> La richesse (S) compte seulement le nombre d'espèces ; Shannon (H') tient compte aussi de l'abondance relative (équitabilité).
+
+---
+
+## X. ERREURS FRÉQUENTES À ÉVITER
+
+- ⚠️ Confondre **variance** (carré, pas d'unité réelle) et **écart-type** (même unité que la variable).
+- ⚠️ Oublier de **classer la série** avant de chercher la médiane.
+- ⚠️ Utiliser un **histogramme** pour une variable qualitative (faux : barres séparées).
+- ⚠️ Confondre **H₀** et **H₁**.
+- ⚠️ Croire que **corrélation = causalité**.
+- ⚠️ Oublier le signe **moins (−)** dans la formule de Shannon.
+- ⚠️ Confondre **population** (totalité) et **échantillon** (partie).
+
+---
+
+## XI. RÉSUMÉ ÉCLAIR
+
+> Population vs échantillon ; variables qualitatives (nominale/ordinale) et quantitatives (discrète/continue). Position : **moyenne, médiane, mode**. Dispersion : **variance, écart-type σ=√V, CV=(σ/x̄)×100**. Graphiques : histogramme (continu) vs bâtons (discret). **Loi normale** 68-95-99,7. Test : **H₀/H₁**, rejet si **p < α (0,05)** ; **χ²** = 2 variables qualitatives. **Corrélation r ∈[−1;1]** (≠ causalité). Biodiversité : **Shannon H'=−Σpᵢln(pᵢ)**, **Simpson D=1−Σpᵢ²**, **Piélou J=H'/lnS**.
+
+---
