@@ -1506,3 +1506,367 @@ Analyse orientée-objet : classification par groupes de pixels homogènes (forme
 - ⚠️ Oublier l'effet saisonnier dans l'interprétation
 - ⚠️ Confondre texture (changement de tons sur un objet) et ton (luminosité globale d'un objet)
 
+
+
+---
+
+# MATIÈRE 9 — GÉOMATIQUE ET SUIVI ENVIRONNEMENTAL
+*(Dr Soufouyane ZAKARI — Semestre 4)*
+
+---
+
+## I. DÉFINITIONS CLÉS
+
+**Environnement** *(loi-cadre 1999 + décret 2022-390)* = « L'ensemble des éléments naturels et artificiels ainsi que des facteurs économiques, sociaux et culturels qui influent sur les êtres vivants et que ceux-ci peuvent modifier. » → inclut aussi la **santé humaine** et les dimensions sociale, économique, culturelle.
+
+**Cycle de vie d'un projet** = Ses différentes phases : **avant, pendant et après** (planification → construction → exploitation → démantèlement). Du « berceau » (planification) à la « tombe » (démantèlement).
+
+**Évaluation environnementale et sociale** = Ensemble d'outils permettant de prendre en compte les risques d'un projet sur l'environnement physique, biologique et humain, au même titre que les risques techniques, économiques et sociaux.
+
+**EIE / EIES** = Étude d'Impact Environnemental (et Social). Processus systématique qui assure que les aspects environnementaux, sociaux et économiques soient inclus dans une prise de décision saine pour un projet. (Aussi appelée Évaluation Environnementale Intégrée – EEI.)
+
+**Géomatique** = Discipline qui combine collecte, gestion, analyse et visualisation des données géographiques (SIG, télédétection, GPS) — appliquée ici au suivi environnemental.
+
+> **⚠️ PIÈGE :** L'environnement n'est PAS seulement « la nature ». La définition légale inclut explicitement les facteurs **économiques, sociaux, culturels** et la **santé humaine**.
+
+---
+
+## II. INTÉGRATION DE L'ENVIRONNEMENT DANS LE CYCLE DE PROJET
+
+**Pourquoi ?** Les préoccupations environnementales peuvent compromettre un projet pourtant techniquement, économiquement et socialement bien défini. Il faut intégrer la protection de l'environnement **le plus tôt possible**.
+
+**Études possibles selon la phase :**
+| Phase | Études / actions |
+|-------|------------------|
+| Planification | Évaluation environnementale stratégique, études préliminaires, EIE |
+| Construction | Surveillance environnementale |
+| Exploitation | Suivi des changements/modifications |
+| Démantèlement | Suivi environnemental + remise en état du terrain |
+
+**Critères importants d'un projet :** pertinence, faisabilité, viabilité, organisation, efficience, efficacité, impact.
+
+**Avantages de l'intégration de l'environnement :**
+- ✅ Protection de l'homme et de l'environnement
+- ✅ Respect de l'obligation légale (EIE obligatoire pour les grands projets)
+- ✅ **Prévention plutôt que guérison** (éviter les impacts dès la conception)
+- ✅ **Réduction des coûts** (mesures de protection prévues tôt = moins chères)
+
+> L'environnement est souvent perçu comme une **contrainte**, mais c'est aussi une **opportunité** (depuis 1972).
+
+---
+
+## III. CADRE JURIDIQUE AU BÉNIN (À CONNAÎTRE PAR CŒUR)
+
+- **Loi-cadre sur l'environnement :** promulguée le **12 février 1999**.
+- **Décret 2022-390 du 13 juillet 2022 :** organise les procédures de l'évaluation environnementale (regroupe tous les outils en un seul texte).
+
+### Les 10 outils de gestion de l'environnement
+1. **EESS** — Évaluation Environnementale et Sociale Stratégique (politiques, plans, programmes ; dès la planification)
+2. **CGES** — Cadre de Gestion Environnementale et Sociale (quand les impacts précis ne sont pas encore connus)
+3. **CPRP** — Cadre Politique de Réinstallation des Populations (déplacement involontaire)
+4. **EIES** — Étude d'Impact Environnemental et Social (outil central, avant réalisation ; **simplifiée** ou **approfondie**)
+5. **PGES** — Plan de Gestion Environnementale et Sociale (mesures d'atténuation, bonification, suivi, responsabilités)
+6. **PARC** — Plan d'Action de Réinstallation et de Compensation
+7. **APE** — Audience Publique sur l'Environnement (participation citoyenne)
+8. **IE** — Inspection Environnementale (contrôle pendant l'exécution)
+9. **AES** — Audit Environnemental et Social (vérification périodique de conformité)
+10. **CCES / CCE** — Certificat de Conformité Environnementale et Sociale (délivré par le Ministre)
+
+### Points clés du processus
+- **EIES simplifiée** = projets d'importance mineure, hors zone sensible. **EIES approfondie** = projets à impacts majeurs et/ou en zone sensible.
+- **Deux types d'audit :** **externe** (responsabilité du Ministre, **tous les 2 ans**) et **interne** (responsabilité du promoteur, **chaque année**).
+- **ABE** = Agence Béninoise pour l'Environnement → reçoit, examine et valide les rapports d'EIES (comité technique + atelier de validation).
+- **CCE** délivré par le **Ministre du Cadre de Vie** (MCVTDD), **valide 1 an**. Si le projet n'est pas mis en œuvre après un an → reprendre la procédure.
+- Les autorisations des ministères sectoriels (mines, énergie…) sont **subordonnées** à l'obtention du CCE.
+
+**Objectif double de l'EIE :**
+- **Court terme :** documenter la prise de décision en identifiant les impacts/risques importants.
+- **Long terme :** faciliter le **développement durable** (ne pas nuire aux ressources, fonctions écologiques, bien-être des populations).
+
+---
+
+## IV. RÔLE DE LA GÉOMATIQUE DANS LE SUIVI ENVIRONNEMENTAL
+
+1. **Cartographie et analyse spatiale** — cartographier les éléments naturels/humains affectés, évaluer les interactions.
+2. **Modélisation des données environnementales** — SIG pour modéliser qualité de l'air, de l'eau, écosystèmes → prédire les impacts.
+3. **Visualisation et communication** — cartes pour communiquer les résultats aux parties prenantes.
+4. **Gestion des données** — gérer de grandes quantités de données spatiales et non spatiales.
+5. **Suivi et surveillance** — comparer impacts réels vs prévisions → gestion adaptative, mesures correctives.
+
+**Cartes nécessaires dans une EIES** *(à citer)* :
+> Situation géographique • Hydrographie • Pédologie • Géomorphologie • Occupation des terres • Carte des enjeux du site.
+
+**Géomatique et PAR (Plan d'Action de Réinstallation) :**
+- Identification/évaluation des zones de réinstallation (accessibilité, ressources, proximité des services)
+- Cartographie des biens affectés et actifs communautaires (écoles, lieux de culte, cimetières)
+- Planification des infrastructures (routes, eau, électricité)
+- Suivi et évaluation post-réinstallation
+- Communication et consultation publique
+
+---
+
+## V. QUESTIONS D'EXAMEN PROBABLES (avec réponses)
+
+**Q1. Donnez la définition légale de l'environnement au Bénin.**
+> L'ensemble des éléments naturels et artificiels ainsi que des facteurs économiques, sociaux et culturels qui influent sur les êtres vivants et que ceux-ci peuvent modifier.
+
+**Q2. Citez les phases du cycle de vie d'un projet et l'étude associée à chacune.**
+> Planification (EIE/évaluation stratégique), Construction (surveillance environnementale), Exploitation (suivi des modifications), Démantèlement (suivi environnemental + remise en état).
+
+**Q3. Quelle loi et quel décret encadrent l'évaluation environnementale au Bénin ?**
+> La loi-cadre sur l'environnement du 12 février 1999 et le décret 2022-390 du 13 juillet 2022.
+
+**Q4. Citez au moins 6 outils de gestion de l'environnement.**
+> EESS, CGES, CPRP, EIES, PGES, PARC, APE, IE, AES, CCES (en citer 6).
+
+**Q5. Différence entre EIES simplifiée et approfondie ?**
+> Simplifiée : projets mineurs hors zone sensible. Approfondie : projets à impacts majeurs et/ou implantés en zone écologiquement sensible.
+
+**Q6. Différence entre audit externe et audit interne ?**
+> Externe : responsabilité du Ministre, tous les 2 ans. Interne : responsabilité du promoteur, chaque année.
+
+**Q7. Quelle est la durée de validité du CCE et que se passe-t-il à expiration ?**
+> Le CCE est valide 1 an. Si le projet n'est pas mis en œuvre dans l'année, le promoteur doit reprendre toute la procédure.
+
+**Q8. Quel est le rôle de l'ABE ?**
+> L'Agence Béninoise pour l'Environnement reçoit, examine (via comité technique et atelier de validation) et valide les rapports d'EIES, puis transmet le projet de CCE au Ministre.
+
+**Q9. Citez 5 rôles de la géomatique dans le suivi environnemental.**
+> Cartographie/analyse spatiale, modélisation des données, visualisation/communication, gestion des données, suivi et surveillance.
+
+**Q10. Quelles cartes sont nécessaires dans une EIES ?**
+> Situation géographique, hydrographie, pédologie, géomorphologie, occupation des terres, carte des enjeux.
+
+**Q11. Quel est l'objectif double de l'EIE ?**
+> Court terme : documenter la prise de décision (impacts/risques). Long terme : faciliter le développement durable.
+
+**Q12. Citez 3 avantages d'intégrer l'environnement dans la gestion de projet.**
+> Protection de l'homme/environnement, respect de l'obligation légale, prévention plutôt que guérison, réduction des coûts (en citer 3).
+
+**Q13. Comment la géomatique appuie-t-elle un Plan d'Action de Réinstallation (PAR) ?**
+> Identification des zones de réinstallation, cartographie des biens affectés, planification des infrastructures, suivi post-réinstallation, communication avec les communautés.
+
+---
+
+## VI. ERREURS FRÉQUENTES À ÉVITER
+
+- ⚠️ Confondre la **loi-cadre (12 février 1999)** et le **décret 2022-390 (13 juillet 2022)**.
+- ⚠️ Inverser audit **externe** (2 ans, Ministre) et **interne** (annuel, promoteur).
+- ⚠️ Oublier que le **CCE n'est valide qu'1 an**.
+- ⚠️ Confondre les sigles : **EIES** (l'étude), **PGES** (le plan de gestion), **CCE** (le certificat).
+- ⚠️ Réduire l'environnement à la « nature » (oublier les dimensions sociale/économique/santé).
+
+---
+
+## VII. RÉSUMÉ ÉCLAIR
+
+> Environnement = naturel + artificiel + social/économique/culturel + santé. On intègre l'environnement dès la **planification** du projet (cycle berceau→tombe). Au Bénin : **loi-cadre 12/02/1999** + **décret 2022-390 du 13/07/2022**, **10 outils** (EESS, CGES, CPRP, EIES, PGES, PARC, APE, IE, AES, CCES). EIES **simplifiée/approfondie**. Audit **externe = 2 ans (Ministre)**, **interne = annuel (promoteur)**. **CCE valide 1 an**, délivré par le Ministre via l'**ABE**. La **géomatique** = cartographie, modélisation, visualisation, gestion de données, suivi.
+
+---
+
+# MATIÈRE 10 — CARTOGRAPHIE NUMÉRIQUE & OPENSTREETMAP (OSM)
+*(Dr Soufouyane ZAKARI — Semestre 3 — Théorie et pratique)*
+
+> ℹ️ Cette matière complète et approfondit la Matière 3. Le cours suit le plan : **Rappels cartographie générale → Sémiologie graphique → Cartographie numérique → Pratique OSM.**
+
+---
+
+## I. RAPPELS DE CARTOGRAPHIE GÉNÉRALE
+
+**Cartographie** *(ACI & Comité Français de Cartographie, 1966)* = L'ensemble des études et opérations scientifiques, artistiques et techniques, en vue de l'élaboration et de l'établissement de cartes, plans et autres modes d'expression, ainsi que de leur utilisation.
+
+**Carte** *(3 définitions clés)* :
+- *CFC 1966* : représentation géométrique conventionnelle, en positions relatives, de phénomènes concrets ou abstraits, localisables dans l'espace.
+- *SALICHTCHEV 1967* : représentation **réduite, généralisée, mathématiquement précise** de la surface terrestre sur un plan.
+- *JOLY 1976* : représentation géométrique, **plane, simplifiée et conventionnelle**, dans un rapport de similitude appelé **échelle**.
+
+> **Une carte est toujours une image RÉDUITE, SCHÉMATISÉE et SÉLECTIONNÉE de l'espace :**
+> - **Réduite** → fait intervenir l'**échelle** (jamais en grandeur réelle)
+> - **Schématisée** → simplifiée = **généralisation**
+> - **Sélectionnée** → ne montre que certains éléments (le thème étudié)
+
+### Les 5 grands principes de la carte
+1. La carte est une **représentation** (« dessin »), donc un document **visuel**.
+2. La carte est une représentation **plane**.
+3. La carte est une représentation **réduite** (échelle).
+4. La carte est une représentation **simplifiée** (sélection, schématisation, généralisation).
+5. La carte est une représentation **conventionnelle** (langage cartographique = **sémiologie graphique**, grammaire de Jacques Bertin).
+
+### Cartographie de base vs thématique
+- **Cartographie de base (mathématique/topographique)** : établit les fonds de carte ; fondement mathématique/géométrique (astronomie, topographie, photogrammétrie, géodésie, topométrie, télédétection). → **cartes topographiques / cartes de base**.
+- **Cartographie thématique** : décrit/explique les distributions spatiales de phénomènes. → **cartes thématiques / spéciales** (notion récente, années 1950).
+
+| Cartes topographiques | Cartes thématiques |
+|----------------------|--------------------|
+| Position (lat/long), altitude, forme, dimension des phénomènes concrets permanents | Représentent un thème particulier sur un fond repère |
+| Conventions identiques, échelles précises | Pas de conventions fixes, infinité de cartes et d'échelles |
+| But pratique (mesures de distances, surfaces, dénivellations) | Outils graphiques pour faire passer un message |
+
+### Les 3 étapes d'établissement d'une carte
+1. **Levés topographiques** — inventaire des points du paysage (lat, long, altitude) ; arpentage, réseau géodésique, photos aériennes/images satellitaires.
+2. **Restitution cartographique** — données sélectionnées, ordonnées, traitées (vision stéréoscopique pour les photos aériennes).
+3. **Édition cartographique** — uniformisation : orientation, symboles, couleurs, trames, épaisseurs, écritures.
+
+---
+
+## II. SÉMIOLOGIE GRAPHIQUE
+
+**Sémiologie graphique** = Ensemble des règles permettant l'utilisation d'un système graphique de signes pour la transmission d'une information.
+
+**Le langage cartographique doit être :**
+- **Visuel** (obéit aux règles de la perception visuelle)
+- **Universel** (compréhensible par tous, base physiologique/transculturelle)
+- **Clair et cohérent** (économie de la communication, ne pas distraire de l'essentiel)
+
+### Les 3 signes graphiques élémentaires (l'« alphabet »)
+- **Le point** — lieu géométrique sans surface ; phénomènes ponctuels (impact ponctuel).
+- **Le trait / la ligne** — phénomènes linéaires (routes, chemins de fer, talwegs, canaux), données abstraites (courbes de niveau, isohyètes), conventions (méridiens, parallèles, limites administratives).
+- **La zone (aplat)** — partie du plan cernée ou non par une ligne fermée, surface mesurable.
+
+**Implantation** (manière d'appliquer le figuré) : **ponctuelle**, **linéaire** ou **zonale**.
+
+### Les 6 VARIABLES VISUELLES (À CONNAÎTRE PAR CŒUR)
+| # | Variable | Définition | Sert à |
+|---|----------|-----------|--------|
+| 1 | **Forme** | Enveloppe de l'objet (formes géométriques, symboliques, conventionnelles) | Différencier (qualitatif) |
+| 2 | **Taille (dimension)** | Longueur, hauteur, surface du figuré | **Quantitatif** (variations de quantité) |
+| 3 | **Orientation** | Direction du symbole par rapport à la verticale | Différencier (ponctuel et surfacique) |
+| 4 | **Couleur** | Sensation due aux radiations lumineuses | Différencier (qualitatif) |
+| 5 | **Valeur** | Progression du blanc → saturation (nuances de gris) | **Ordonner / classes statistiques** (la + puissante) |
+| 6 | **Structure (grain)** | Organisation spatiale des éléments (texture) | Ordonner / différencier les zones |
+
+**Couleurs :**
+- **Fondamentales** : **Bleu, Vert, Rouge (B, V, R)** → reconstituent tous les flux colorés (synthèse additive).
+- **Primaires** : **Cyan, Magenta, Jaune (C, M, J)** = complémentaires ; encres d'imprimerie (synthèse soustractive). C = B+V, M = B+R, J = R+V.
+- **Connotations à respecter :** Rouge = chaud/danger/croissance ; Bleu = froid/eau/baisse ; Jaune = sécheresse ; Vert = végétation/reposant.
+
+> **⚠️ PIÈGE :** Seule la **TAILLE** exprime correctement le **quantitatif (absolu)**. Seule la **VALEUR** visualise des **classes ordonnées** d'une série statistique. La **forme/couleur** servent au **qualitatif (différentiel)**, jamais à exprimer une quantité.
+
+---
+
+## III. GÉNÉRALITÉS SUR LA CARTOGRAPHIE NUMÉRIQUE
+
+**Cartographie numérique** = Ensemble des procédés d'élaboration de cartes ayant recours à des **fichiers numériques** ; représentation visuelle des données géographiques sur support digital via les **SIG**, combinant GPS et télédétection.
+
+**Synonymes :**
+- **Cartographie automatique** = traitement automatique de l'information (ordinateur + périphériques).
+- **Cartographie assistée par ordinateur (CAO)** = l'ordinateur va chercher l'information dans une banque de données, la transforme et imprime la carte selon l'échelle/taille/symbolisme spécifiés.
+
+**Numérisation (digitalisation) de l'information** = on recueille les données dans un appareil (GPS, smartphone, tableur) et on laisse l'ordinateur élaborer la carte via un **logiciel SIG**.
+
+### Anciennes cartes vs cartes numériques
+| Anciennes cartes (manuscrites) | Cartes numériques |
+|-------------------------------|-------------------|
+| ❌ Support fragile (papier, humidité, insectes) | ✅ Meilleur support (carte mémoire, flash disque) |
+| ❌ Difficiles à manipuler/déplacer | ✅ Faciles à manipuler (zoom/dézoom, déplacement) |
+| ❌ Difficiles à retoucher (risque de salir) | ✅ Faciles à retoucher/mettre à jour |
+| — | ✅ Faciles à diffuser ; ✅ divers supports (numérique + A4/A3/A2/A1) |
+
+---
+
+## IV. PRATIQUE : OPENSTREETMAP (OSM)
+
+**OpenStreetMap (OSM)** = « Le **Wikipédia de la cartographie** » (www.osm.org). Projet wiki visant une carte **libre et ouverte** du monde, construite par des **volontaires**. OSM = base de données géographiques des objets ayant une existence sur le terrain (visibles : routes, bâtiments, occupation du sol, services ; ou non visibles : lignes de transport, noms de lieux, limites administratives).
+> OSM ne répertorie **pas** d'information sur les populations, mais peut être connectée à d'autres données.
+
+**Licence ODbL** (Open Database Licence, Creative Commons) = autorise partage, création, adaptation pour tous usages (commerciaux ou non). La redistribution d'une base intégrant OSM impose l'adoption de l'ODbL.
+
+**Acteurs / gouvernance :** citoyens, associations, gouvernements, ONG, organisations internationales (ONU, Banque Mondiale), universités, secteur privé (Microsoft, MapBox, Geofabrik…). Gouvernance assurée par la **Fondation OpenStreetMap** + chapitres locaux.
+
+**Avantages d'OSM :** appui sur les contributeurs locaux • structure robuste (milliards d'infos) • nombreux moyens de contribution à faible coût • réutilisations variées (ordinateur, papier, smartphone, GPS).
+
+### Réutilisation / téléchargement des données OSM
+Sites/outils : **BBBike**, **Diva GIS**, **HOT Export**, **Overpass turbo**, **Geofabrik**, et dans **QGIS** (extensions **OSMDownloader** et **QuickOSM**).
+
+| Outil | Particularité | Quand l'utiliser |
+|-------|--------------|------------------|
+| **QGIS (OSMDownloader)** | Sélection rectangulaire, export en **.osm** | Zone peu étendue |
+| **QGIS (QuickOSM)** | Requête par **clé/valeur**, format souple | N'importe quelle zone du projet |
+| **Geofabrik** | Téléchargement en 1 clic à l'échelle pays/région (**shp.zip** ou **.osm.pbf**) | Données d'un pays entier |
+| **BBBike** | N'importe quelle zone (≤ ~24 M km²), lien reçu par e-mail (7-8 min) | Étendue définie par l'utilisateur, apps mobiles |
+| **HOT Export** | Compte OSM requis, zone précise (Box/Draw/Import) | Données thématiques sur zone précise |
+
+---
+
+## V. PRATIQUE : DONNÉES OSM SOUS QGIS
+
+- **Afficher OSM en fond de carte sans téléchargement** → extension **QuickMapServices** (menu Internet ; nécessite Internet).
+- **Modèle de données OSM = couples clé/valeur** définissant les attributs. Exemples :
+  - `amenity = restaurant` (points de restaurants)
+  - `highway` (routes), `building` (bâtiments), `landuse` (occupation du sol), `natural` (éléments naturels), `place` (lieux), `waterway` (rivières), `railway` (voies ferrées)
+- **Geofabrik / BBBike** → fichiers **shapefile** classés par thématique (buildings, landuse, natural, places, POIs, transport, railways, roads, water…). Suffixe `a_free_1.shp` = polygones ; `free_1.shp` = points/lignes.
+- **HOT Export** → 3 fichiers .shp (**points, lignes, polygones**) NON classés par thème → utiliser la **table attributaire** et des **filtres SQL**.
+
+**Filtre SQL pour extraire une couche thématique** (ex. routes depuis la couche Lines) :
+```
+"highway" <> ' '
+```
+- `"highway"` = nom du champ (toujours entre guillemets)
+- `<>` = « différent de »
+- `' '` = attribut vide
+→ sélectionne les lignes ayant un attribut `highway` (= les routes). Puis **Exporter** → **ESRI Shapefile** (ex. `route.shp`).
+
+> Autres filtres : `"building" <> ' '` (bâtiments) • `"landuse" <> ' '` (occupation du sol) • `"natural" <> ' '` (naturel) • `"place" <> ' '` (lieux) • `"amenity" <> ' '` (POI) • `"waterway" <> ' '` (rivières) • `"railway" <> ' '` (voies ferrées).
+
+---
+
+## VI. QUESTIONS D'EXAMEN PROBABLES (avec réponses)
+
+**Q1. Pourquoi dit-on qu'une carte est réduite, schématisée et sélectionnée ?**
+> Réduite (échelle, jamais en grandeur réelle), schématisée (simplifiée par généralisation), sélectionnée (montre seulement les éléments du thème étudié).
+
+**Q2. Citez les 5 grands principes de la carte.**
+> Représentation (dessin/visuel), plane, réduite, simplifiée, conventionnelle.
+
+**Q3. Différence entre cartographie de base et cartographie thématique ?**
+> La cartographie de base (mathématique/topographique) établit les fonds de carte avec un fondement géométrique précis ; la thématique décrit les distributions spatiales d'un phénomène sur un fond repère.
+
+**Q4. Quelles sont les 3 étapes d'établissement d'une carte ?**
+> Levés topographiques, restitution cartographique, édition cartographique.
+
+**Q5. Qu'est-ce que la sémiologie graphique ?**
+> L'ensemble des règles d'utilisation d'un système graphique de signes pour transmettre une information (grammaire du langage cartographique, Jacques Bertin).
+
+**Q6. Citez les 3 signes graphiques élémentaires et les 6 variables visuelles.**
+> Signes : point, ligne (trait), zone. Variables : forme, taille, orientation, couleur, valeur, structure (grain).
+
+**Q7. Quelle variable visuelle exprime le quantitatif ? Laquelle ordonne des classes statistiques ?**
+> La **taille** exprime le quantitatif ; la **valeur** visualise les classes ordonnées d'une série statistique.
+
+**Q8. Différence entre couleurs fondamentales et primaires ?**
+> Fondamentales : Bleu, Vert, Rouge (synthèse additive). Primaires : Cyan, Magenta, Jaune (complémentaires, synthèse soustractive, encres d'imprimerie).
+
+**Q9. Qu'est-ce que la cartographie numérique ? Citez 3 avantages des cartes numériques.**
+> Ensemble des procédés d'élaboration de cartes via fichiers numériques et SIG. Avantages : meilleur support, faciles à manipuler (zoom), faciles à diffuser et à mettre à jour.
+
+**Q10. Qu'est-ce qu'OpenStreetMap et sous quelle licence est-il diffusé ?**
+> Le « Wikipédia de la cartographie » : une base de données géographiques libre et collaborative, sous licence **ODbL** (Open Database Licence).
+
+**Q11. Citez 3 outils/sites pour télécharger des données OSM.**
+> BBBike, Geofabrik, HOT Export (ou Diva GIS, Overpass turbo, QGIS via OSMDownloader/QuickOSM).
+
+**Q12. Comment afficher OSM en fond de carte dans QGIS sans télécharger les données ?**
+> En installant et utilisant l'extension **QuickMapServices** (menu Internet) — nécessite une connexion Internet.
+
+**Q13. Écrivez le filtre SQL permettant d'extraire les routes d'une couche Lines OSM, et expliquez-le.**
+> `"highway" <> ' '` : sélectionne les lignes dont le champ « highway » n'est pas vide (`<>` = différent de, `' '` = vide), c'est-à-dire les routes.
+
+---
+
+## VII. ERREURS FRÉQUENTES À ÉVITER
+
+- ⚠️ Confondre les **3 signes** (point/ligne/zone) et les **6 variables visuelles** (forme/taille/orientation/couleur/valeur/grain).
+- ⚠️ Utiliser la **couleur ou la forme** pour exprimer une **quantité** (faux : c'est la **taille**).
+- ⚠️ Confondre **couleurs fondamentales** (B,V,R) et **primaires** (C,M,J).
+- ⚠️ Confondre **cartographie automatique** et **assistée par ordinateur (CAO)**.
+- ⚠️ Oublier la licence **ODbL** d'OSM (libre mais redistribution impose l'ODbL).
+- ⚠️ Confondre les sources de téléchargement (Geofabrik = pays entier ; BBBike/HOT = zone précise).
+- ⚠️ Oublier les guillemets autour du nom de champ dans un filtre SQL QGIS.
+
+---
+
+## VIII. RÉSUMÉ ÉCLAIR
+
+> Carte = réduite + schématisée + sélectionnée → **5 principes** (dessin, plane, réduite, simplifiée, conventionnelle). **3 signes** : point/ligne/zone ; **6 variables visuelles** : forme, taille, orientation, couleur, valeur, grain (**taille = quantitatif**, **valeur = classes ordonnées**). Couleurs **fondamentales B/V/R** vs **primaires C/M/J**. Cartographie numérique = cartes via **SIG/fichiers numériques** (≫ avantages vs cartes papier). **OSM** = Wikipédia de la carto, libre (**ODbL**), téléchargeable via **BBBike/Geofabrik/HOT/QGIS** ; sous QGIS : fond de carte **QuickMapServices**, modèle **clé/valeur** (`amenity=restaurant`, `highway`), filtres SQL `"champ" <> ' '`.
+
+---
