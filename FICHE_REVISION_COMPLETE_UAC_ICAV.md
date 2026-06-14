@@ -2238,3 +2238,185 @@ $$D = 1 - \sum p_i^2$$
 > Population vs échantillon ; variables qualitatives (nominale/ordinale) et quantitatives (discrète/continue). Position : **moyenne, médiane, mode**. Dispersion : **variance, écart-type σ=√V, CV=(σ/x̄)×100**. Graphiques : histogramme (continu) vs bâtons (discret). **Loi normale** 68-95-99,7. Test : **H₀/H₁**, rejet si **p < α (0,05)** ; **χ²** = 2 variables qualitatives. **Corrélation r ∈[−1;1]** (≠ causalité). Biodiversité : **Shannon H'=−Σpᵢln(pᵢ)**, **Simpson D=1−Σpᵢ²**, **Piélou J=H'/lnS**.
 
 ---
+
+---
+
+# MATIÈRE 13 — MODÈLE NUMÉRIQUE DE TERRAIN (MNT) ET MODÈLE NUMÉRIQUE D'ÉLÉVATION (MNE)
+
+> Dr (MC) Soufouyane ZAKARI & Dr Ismaël MAZO — Examen : Mardi 16/06 à 17H-18H
+
+---
+
+## I. DÉFINITIONS CLÉS
+
+**MNT (Modèle Numérique de Terrain)** = DTM (Digital Terrain Model) en anglais = représentation numérique et mathématique de l'altitude d'un point de la surface terrestre dans un système référentiel défini.
+- Représente la **surface nue du sol** (sans bâtiments, sans arbres).
+- Ne prend PAS en compte la hauteur des bâtiments ni celle de la végétation.
+
+**MNE (Modèle Numérique d'Élévation)** = DEM (Digital Elevation Model) en anglais = concept générique qui peut faire référence à l'altimétrie du terrain **mais aussi** à toute couche au-dessus du terrain (végétation, bâtiments).
+- Prend en compte la **canopée** (sommet des arbres) et le sursol (bâtiments).
+
+**MNS (Modèle Numérique de Surface)** = DSM (Digital Surface Model) = valeur maximale de hauteur au-dessus du sol dans chaque maille (inclut bâtiments + végétation).
+
+> **⚠️ DIFFÉRENCE CLÉ :**
+> - **MNT** = sol nu / topographie seule
+> - **MNE** = 1ère surface réfléchissante ≈ sommet de la canopée
+> - **MNS** = tout ce qui dépasse du sol (bâtiments + arbres)
+>
+> Les images aériennes/satellites produisent par défaut un **MNE**. Il faut un traitement supplémentaire pour obtenir un **MNT**.
+
+---
+
+## II. STRUCTURES POSSIBLES DES MNT
+
+| Structure | Description | Avantage | Inconvénient |
+|-----------|-------------|----------|--------------|
+| **Maillage carré régulier** (le plus courant) | Tableau d'altitudes aux nœuds d'un réseau régulier | Facile à manipuler | Même densité d'info partout |
+| **Maillage triangulaire irrégulier (TIN)** | Cotes aux nœuds d'un réseau de triangles (Triangular Irregular Network) | Mailles ajustables localement | Localisation d'un point non instantanée |
+| **Maillage carré irrégulier** | Mailles carrées de tailles variables | Dimension ajustable | Manipulation complexe |
+| **Courbes de niveau (vecteur)** | Lignes polygonales affectées d'une cote z | Adapté à la saisie et visualisation | Inadapté à l'exploitation informatique |
+| **Profils parallèles** | Altitudes le long de profils équidistants | Structure Lidar et photogrammétrique | Approximativement régulière |
+
+---
+
+## III. SOURCES DE DONNÉES MNT/MNE
+
+| Source | Produit obtenu |
+|--------|---------------|
+| Levés topographiques (station totale, GNSS) | MNT ou MNS |
+| Photogrammétrie — photos aériennes | MNT ou MNS |
+| Photogrammétrie — images satellites stéréo (ASTER GDEM, HRS/SPOT 5) | MNS |
+| **Lidar** aérien/satellitaire (GLAS/ICEsat, GEDI) | 1er écho = MNS / 2e écho = MNT |
+| Interférométrie radar (SRTM, TanDEM-X, TerraSAR-X) | MNS |
+
+**Bases de données gratuites en ligne :**
+- **NASA** : DEM ASTER (30 m), SRTM-1 (30 m), SRTM-3 (90 m), SRTM 30, MOLA MEGDR
+- **USGS** : DEM SDTS, NED, GTOPO30
+- **NIMA** : SRTMs
+
+---
+
+## IV. CARACTÉRISTIQUES DE QUELQUES MNE CONNUS
+
+| Produit | Résolution | Éditeur | Année | Remarque |
+|---------|-----------|---------|-------|----------|
+| **GTOPO30** | ~1 km (30") | USGS/NASA | 1996 | Terre entière, vecteur + raster |
+| **SRTM-3** | 90 m | NASA/NIMA | 2000 | 60 % des terres émergées |
+| **SRTM-1** | 30 m | NASA/IGN | — | Mars (hors zones polaires) |
+| **SRTM 30 Plus** | 1' d'arc | NASA | 2008 | Inclut données bathymétriques |
+| **ASTER GDEM** | 30 m | NASA + Japon | 2009 | Terre entière, quelques anomalies |
+| **Alos World DEM** | 5 m | ALOS JAXA | — | Sur demande |
+
+---
+
+## V. VISUALISATION D'UN MNT
+
+- **Niveaux de gris / teintes hypsométriques** : chaque pixel reçoit une valeur de gris ou une couleur selon l'altitude (altitudes hautes = couleurs claires). Facile à réaliser, peu lisible.
+- **Vue perspective (bloc-diagramme)** : vue 3D du terrain, représentation en grille.
+- **Courbes de niveau "en mode maillé"** : tracé rapide des courbes à partir du MNT sans reconstituer les lignes polygonales.
+
+---
+
+## VI. PRODUITS DÉRIVÉS DU MNE (via QGIS → Raster → Analyse de terrain)
+
+| Produit | Définition |
+|---------|-----------|
+| **Pente** | Dérivée première de l'élévation en degrés (0° = terrain plat) |
+| **Exposition** | Orientation du terrain : 0°/360°=Nord, 90°=Ouest, 180°=Sud, 270°=Est |
+| **Ombrage** | Ombres simulées (source lumineuse à 300° d'azimut, 40° d'élévation) |
+| **Relief** | Représentation 3D superposant 3 composantes |
+| **Index de rugosité** | Moyenne des dénivelés entre la cellule centrale et ses **8 voisines** (mesure l'hétérogénéité du terrain) |
+
+> **NB :** Tous ces calculs sont effectués sur une grille de **3×3 cellules** (8 voisines).
+
+---
+
+## VII. DOMAINES D'UTILISATION DES MNE
+
+- Extraction de **réseaux hydrographiques** et bassins versants
+- Tracé de **profils topographiques** (tourisme, routes)
+- Modélisation de l'**écoulement de l'eau** (risques d'inondation)
+- Création de **cartes de relief** et **cartes des pentes**
+- **Gestion des risques** : inondations, glissements de terrain
+- Analyse géomorphologique
+- Ingénierie et construction d'infrastructure
+- Cartographie militaire
+
+---
+
+## VIII. TP — RÉALISATION D'UN MNT AVEC GPS VISUALIZER + QGIS
+
+**Étapes à retenir pour l'examen :**
+
+1. **QGIS** → Créer une grille de la zone (type POINT, espacement 50 m, projection WGS 31N) → Enregistrer en **format KML**
+2. **GPS Visualizer** → Téléverser le fichier KML → Choisir format de sortie **GPX**, DEM = **NASA/SRTM1**, API = OpenStreetMap → **CONVERTIR**
+3. Télécharger le fichier **GPX** (profil d'élévation)
+4. **QGIS** → Importer le GPX comme couche vectorielle (choisir "**waypoints**")
+5. **Boîte à outils → Interpolation TIN** : attribut = **Ele**, type = **Point**, taille de pixel = **30×30** → Exécuter
+6. Résultat = image raster = **MNT de la zone**
+
+---
+
+## IX. LOGICIELS DE TRAITEMENT MNE/MNT
+
+QGIS Remote Sensing, ArcGIS, Surfer, 3DEM, RiverTools, TNTmips.
+
+---
+
+## X. QUESTIONS D'EXAMEN PROBABLES (avec réponses)
+
+**Q1. Quelle est la différence entre MNT, MNE et MNS ?**
+> MNT = surface nue du sol (sans bâtiments ni végétation) ; MNE = 1ère surface réfléchissante ≈ sommet de la canopée (inclut végétation) ; MNS = valeur maximale de hauteur au-dessus du sol (inclut tout).
+
+**Q2. Quel produit donne le Lidar selon l'écho ?**
+> 1er écho = MNS (surface) ; 2e écho = MNT (sol nu).
+
+**Q3. Citez les 5 structures possibles d'un MNT.**
+> Maillage carré régulier, maillage triangulaire irrégulier (TIN), maillage carré irrégulier, courbes de niveau en mode vecteur, profils parallèles.
+
+**Q4. Quel est l'avantage du TIN par rapport au maillage régulier ?**
+> La taille des mailles peut être ajustée localement à la complexité du terrain (plus de points dans les zones de fort relief).
+
+**Q5. Citez 3 bases de données MNE gratuites et leurs fournisseurs.**
+> ASTER GDEM (NASA, 30 m), SRTM-3 (NASA/NIMA, 90 m), GTOPO30 (USGS/NASA, ~1 km).
+
+**Q6. Quelle est la résolution de l'ASTER GDEM ? Qui le produit ?**
+> Résolution de 30 m, produit en 2009 par les États-Unis et le Japon, couvre la Terre entière.
+
+**Q7. Définissez la pente et l'exposition dérivées d'un MNT.**
+> Pente = dérivée première de l'élévation en degrés d'inclinaison (0° = terrain plat). Exposition = orientation du terrain de 0° à 360° (0°/360° = Nord, 90° = Ouest, 180° = Sud, 270° = Est).
+
+**Q8. Qu'est-ce que l'index de rugosité ?**
+> Moyenne des dénivelés entre la cellule centrale et ses 8 voisines ; mesure l'hétérogénéité du terrain ; calculé sur une grille de 3×3 cellules.
+
+**Q9. Citez 4 domaines d'utilisation des MNE.**
+> Extraction de réseaux hydrographiques, gestion des risques d'inondation, tracé de profils topographiques, cartographie des pentes.
+
+**Q10. Dans QGIS, quel menu permet d'accéder aux produits dérivés du MNE ?**
+> Raster → Analyse de terrain.
+
+**Q11. Pourquoi les images aériennes et satellites produisent-elles par défaut un MNE et non un MNT ?**
+> Parce qu'elles capturent la première surface réfléchissante (sommet des arbres et bâtiments). Il faut des traitements supplémentaires pour filtrer ces objets et obtenir le sol nu (MNT).
+
+**Q12. Décrivez les étapes du TP de réalisation d'un MNT avec GPS Visualizer.**
+> 1. Créer une grille de points (QGIS) → KML. 2. GPS Visualizer : convertir KML en GPX avec DEM NASA/SRTM1. 3. Importer GPX dans QGIS (waypoints). 4. Interpolation TIN (attribut Ele, pixel 30×30) → MNT raster.
+
+---
+
+## XI. ERREURS FRÉQUENTES À ÉVITER
+
+- ⚠️ Confondre **MNT** (sol nu) et **MNE** (inclut végétation et bâtiments).
+- ⚠️ Croire que les images satellites donnent directement un MNT (elles donnent un **MNE/MNS**).
+- ⚠️ Confondre **SRTM-1** (30 m) et **SRTM-3** (90 m).
+- ⚠️ Oublier que le Lidar donne **MNS au 1er écho** et **MNT au 2e écho** (pas l'inverse).
+- ⚠️ Confondre **TIN** (triangles irréguliers) et maillage régulier.
+- ⚠️ Dans l'exposition : **90° = Ouest** (pas Est) ; **270° = Est** (pas Ouest).
+- ⚠️ L'index de rugosité calcule sur **3×3 cellules** (8 voisines), pas 4.
+
+---
+
+## XII. RÉSUMÉ ÉCLAIR
+
+> **MNT** (DTM) = sol nu ; **MNE** (DEM) = inclut canopée ; **MNS** (DSM) = tout. Sources : levés topo/GNSS, photogrammétrie, **Lidar** (1er écho=MNS, 2e écho=MNT), interférométrie radar (SRTM). 5 structures : maillage régulier, **TIN**, maillage irrégulier, courbes de niveau, profils parallèles. MNE gratuits : **ASTER GDEM** (30 m/NASA/2009), **SRTM-3** (90 m), **GTOPO30** (~1 km). Produits dérivés QGIS : **pente, exposition, ombrage, relief, rugosité** (grille 3×3). TP : QGIS grille → KML → GPS Visualizer GPX → QGIS waypoints → **interpolation TIN** → MNT raster.
+
+---
